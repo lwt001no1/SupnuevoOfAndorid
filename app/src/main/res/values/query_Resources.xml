@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="chaxun_Query">查询</string>
+    <string name="saoma_Query">扫码</string>
+    <string name="qingshurutiaoma_Query">请输入条码</string>
+</resources>

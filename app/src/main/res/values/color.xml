@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Line">#D2D2D2</color>
+    <color name="themeColor">#3A5FCD</color>
+    <color name="text_yello">#EEEE00</color>
+    <color name="text_gray">#CDC9C9</color>
+    <color name="transparent">#FCFCFC</color>
+    <color name="bg_white">#000000</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+</resources>

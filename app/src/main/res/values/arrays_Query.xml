@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_Query">
+        <item >李文韬1</item>
+        <item >李文韬2</item>
+        <item >李文韬3</item>
+        <item >李文韬4</item>
+        <item >李文韬5</item>
+        <item >李文韬6</item>
+        <item >李文韬7</item>
+        
+    </string-array>
+</resources>

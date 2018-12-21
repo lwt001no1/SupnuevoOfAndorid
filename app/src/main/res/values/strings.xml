@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">supnuevoOfAndroid</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="header">supnuevo(5.0)</string>
+    <string name="login_img">supnuevo</string>
+    <string name="user">用户名:</string>
+    <string name="password">密  码:</string>
+    <string name="login">登 录</string>
+    <string name="tab_sale">收银</string>
+    <string name="tab_stock">进货</string>
+    <string name="tab_query">改价</string>
+    <string name="tab_my">我的</string>
+    <string name="tab_information">公告</string>
+    <string name="chaxun">查询</string>
+    <string name="saoma">扫码</string>
+    <string name="codigo">codigo</string>
+    <string name="call">通讯录</string>
+
+</resources>
