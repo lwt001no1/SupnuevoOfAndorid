@@ -91,56 +91,6 @@ public class LoginActivity extends Activity {
                 Looper.myLooper().quit();
             }
         }.start();
-
-    }
-
-    private Handler mHandler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 1:
-                    CustomDialog.hideWaitingDialo();
-                    break;
-            }
-
-        }
-
-        ;
-    };
-
-    private String sendHttpLogin(final String username, final String password) throws Exception {
-        // TODO Auto-generated method stub
-        FutureTask<String> task = new FutureTask<String>(new Callable<String>() {
-
-            @Override
-            public String call() throws Exception {
-                // TODO Auto-generated method stub
-                HttpClient httpClient = new DefaultHttpClient();
-                HttpPost httpPost = new HttpPost(baseUrl);
-                httpPost.setHeader("Content-Type", "application/json");
-                List<NameValuePair> pairList = new ArrayList<NameValuePair>();
-                NameValuePair pair1 = new BasicNameValuePair("username", username);
-                NameValuePair pair2 = new BasicNameValuePair("password", password);
-                pairList.add(pair1);
-                pairList.add(pair2);
-                httpPost.setEntity(new UrlEncodedFormEntity(pairList));
-                HttpResponse httpResponse = httpClient.execute(httpPost);
-                System.out.println("**************************" + httpResponse.getStatusLine().getStatusCode());
-                Log.e("HttpPost", "**************************" + httpResponse.getStatusLine().getStatusCode());
-                if (httpResponse.getStatusLine().getStatusCode() == 200) {
-                    Log.e("HttpPost", "**************************" + httpResponse.getStatusLine().getStatusCode());
-                    String result = EntityUtils.toString(httpResponse.getEntity());
-                    return result;
-                } else {
-                    Log.e("HttpPost", "**************************" + httpResponse.getStatusLine().getStatusCode());
-                }
-                return null;
-            }
-
-        });
-        new Thread(task).start();
-        return task.get();
-
     }
 
     @Override

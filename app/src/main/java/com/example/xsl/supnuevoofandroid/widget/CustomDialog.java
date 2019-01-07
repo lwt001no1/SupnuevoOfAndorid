@@ -57,9 +57,7 @@ public class CustomDialog extends Dialog {
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.dialog_waiting, null);
         TextView tv = (TextView) v.findViewById(R.id.tvTip);
-
-        tv.setText("正在登录。。");
-
+        tv.setText(tips);
         cusDialog = new CustomDialog(context, R.style.MyDialog);
 
         if (!TextUtils.isEmpty(tips)) {
@@ -67,7 +65,7 @@ public class CustomDialog extends Dialog {
 
         }
         cusDialog.setCancelable(true);
-        cusDialog.setContentView(R.layout.dialog_waiting);
+        cusDialog.setContentView(v);
         cusDialog.setCanceledOnTouchOutside(false);
         cusDialog.show();
         return cusDialog;

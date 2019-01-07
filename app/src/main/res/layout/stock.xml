@@ -15,10 +15,17 @@
 
     <View style="@style/underLine" />
 
+    <TextView
+        android:id="@+id/stock_waitDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chaxun"
+        android:layout_gravity="center"
+        android:textSize="26dp" />
+
     <ListView
         android:id="@+id/stock_ListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

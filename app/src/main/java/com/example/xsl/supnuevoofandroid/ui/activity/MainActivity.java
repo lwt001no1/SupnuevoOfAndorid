@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.xsl.supnuevoofandroid.R;
 import com.example.xsl.supnuevoofandroid.ui.base.CrashHandler;
+import com.example.xsl.supnuevoofandroid.ui.fragment.MyFragment;
 import com.example.xsl.supnuevoofandroid.ui.fragment.QueryFragment;
 import com.example.xsl.supnuevoofandroid.ui.fragment.SaleFragment;
 import com.example.xsl.supnuevoofandroid.ui.fragment.StockFragment;
@@ -31,8 +32,9 @@ public class MainActivity extends Activity implements OnClickListener {
     private QueryFragment fg1;
     private SaleFragment fg2;
     private StockFragment fg3;
+    private MyFragment fg4;
     // Fragment Object
-    private TabFragment fg4, fg5;
+    private TabFragment fg5;
     private FragmentManager fManager;
     private long exitTime = 0;
 
@@ -104,7 +106,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 setSelected();
                 tab_my.setSelected(true);
                 if (fg4 == null) {
-                    fg4 = new TabFragment("��4��");
+                    fg4 = new MyFragment();
                     fTeansaction.add(R.id.tab_content, fg4);
                 } else {
                     fTeansaction.show(fg4);

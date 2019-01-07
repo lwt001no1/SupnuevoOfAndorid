@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CrashHandler implements  Thread.UncaughtExceptionHandler {
+public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
 
     /**
@@ -36,7 +36,7 @@ public class CrashHandler implements  Thread.UncaughtExceptionHandler {
     /**
      * 存储异常和参数信息
      */
-    private Map<String,String> paramsMap = new HashMap<>();
+    private Map<String, String> paramsMap = new HashMap<>();
 
     /**
      * 格式化时间
@@ -54,14 +54,14 @@ public class CrashHandler implements  Thread.UncaughtExceptionHandler {
     /**
      * 获取CrashHandler实例
      */
-    public static synchronized CrashHandler getInstance(){
-        if(null == mInstance){
+    public static synchronized CrashHandler getInstance() {
+        if (null == mInstance) {
             mInstance = new CrashHandler();
         }
         return mInstance;
     }
 
-    public void init(Context context){
+    public void init(Context context) {
         mContext = context;
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         //设置该CrashHandler为系统默认的
@@ -74,9 +74,9 @@ public class CrashHandler implements  Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
         Log.e(TAG, "uncaughtException...", ex);
-        if(!handleException(ex) && mDefaultHandler != null){//如果自己没处理交给系统处理
-            mDefaultHandler.uncaughtException(thread,ex);
-        }else{//自己处理
+        if (!handleException(ex) && mDefaultHandler != null) {//如果自己没处理交给系统处理
+            mDefaultHandler.uncaughtException(thread, ex);
+        } else {//自己处理
             try {//延迟3秒杀进程
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -90,7 +90,8 @@ public class CrashHandler implements  Thread.UncaughtExceptionHandler {
 
     /**
      * 收集错误信息.发送到服务器
-     * @return 处理了该异常返回true,否则false
+     *
+     * @return 处理了该异常返回true, 否则false
      */
     private boolean handleException(Throwable ex) {
         if (ex == null) {
@@ -100,12 +101,14 @@ public class CrashHandler implements  Thread.UncaughtExceptionHandler {
         collectDeviceInfo(mContext);
         //添加自定义信息
         addCustomInfo();
+
+        final String s = ex.getMessage();
         //使用Toast来显示异常信息
         new Thread() {
             @Override
             public void run() {
                 Looper.prepare();
-                Toast.makeText(mContext, "程序开小差了呢..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "程序开小差了呢."+'\n'+s, Toast.LENGTH_SHORT).show();
                 Looper.loop();
             }
         }.start();
@@ -117,6 +120,7 @@ public class CrashHandler implements  Thread.UncaughtExceptionHandler {
 
     /**
      * 收集设备参数信息
+     *
      * @param ctx
      */
     public void collectDeviceInfo(Context ctx) {
@@ -156,7 +160,7 @@ public class CrashHandler implements  Thread.UncaughtExceptionHandler {
      * 保存错误信息到文件中
      *
      * @param ex
-     * @return  返回文件名称,便于将文件传送到服务器
+     * @return 返回文件名称, 便于将文件传送到服务器
      */
     private String saveCrashInfo2File(Throwable ex) {
 

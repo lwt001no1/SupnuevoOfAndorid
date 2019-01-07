@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.xsl.supnuevoofandroid.R;
 import com.example.xsl.supnuevoofandroid.ui.adapter.SaleAdapter;
 import com.example.xsl.supnuevoofandroid.ui.adapter.StockAdapter;
+import com.example.xsl.supnuevoofandroid.widget.CustomDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +34,7 @@ public class StockFragment extends Fragment {
     private ArrayList<HashMap> arr = new ArrayList<HashMap>();
     private StockAdapter adapter;
     private ArrayList<String> mArr = new ArrayList<String>();
+    private TextView wait;
 
     public StockFragment() {
     }
@@ -44,6 +46,7 @@ public class StockFragment extends Fragment {
 //        initBind(view);
         textView = (TextView) view.findViewById(R.id.stock_TextView);
         listView = (ListView) view.findViewById(R.id.stock_ListView);
+        wait = (TextView) view.findViewById(R.id.stock_waitDialog);
         adapter = new StockAdapter(arr);
         listView.setAdapter(adapter);
         Runnable run = new Runnable() {
@@ -53,6 +56,8 @@ public class StockFragment extends Fragment {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        wait.setVisibility(View.GONE);
+                        CustomDialog.hideWaitingDialo();
                         adapter.notifyDataSetChanged();
 //                adapter = new StockAdapter(arr);
 //                listView.setAdapter(adapter);
@@ -61,6 +66,7 @@ public class StockFragment extends Fragment {
             }
         };
         new Thread(run).start();
+        CustomDialog.showWaitingDialog(getContext(),"查询中。。。");
         return view;
     }
 

@@ -18,5 +18,6 @@
     <string name="saoma">扫码</string>
     <string name="codigo">codigo</string>
     <string name="call">通讯录</string>
-
+    <string name="genggaizhuxiancheng">更改主线程</string>
+    <string name="xinxichuandi">信息传递</string>
 </resources>
